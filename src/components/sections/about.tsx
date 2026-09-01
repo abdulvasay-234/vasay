@@ -15,7 +15,7 @@ export function AboutSection() {
   return (
     <section id="about" className="about" aria-labelledby="about-title">
       <header className="about-header">
-        <p className="about-label">06 / About</p>
+        <p className="about-label">05 / About</p>
         <h2 id="about-title" className="about-title">
           Building at the intersection of technology, developers, and community.
         </h2>
@@ -43,7 +43,7 @@ export function AboutSection() {
             </p>
           ))}
 
-          <Link href="/work" className="about-inline-link">
+          <Link href="/work/hackunion" className="about-inline-link">
             View HackUnion <span aria-hidden="true">&rarr;</span>
           </Link>
         </article>
@@ -85,14 +85,14 @@ export function AboutSection() {
       </div>
 
       <div className="about-footer">
-          <Link href="/#contact" className="intro-link">
+          <Link href="/contact" className="intro-link">
           Let&apos;s build something useful <span aria-hidden="true">&rarr;</span>
         </Link>
       </div>
 
       <div className="about-next" aria-label="Section transition">
         <div className="intro-next-rule" />
-        <p className="intro-next-label">07 / Contact</p>
+        <p className="intro-next-label">06 / The Playground</p>
       </div>
     </section>
   );

@@ -8,10 +8,11 @@ export type SelectedWorkMedia = {
 };
 
 export type SelectedWorkItem = {
-  id: "hackunion" | "openbuild-week" | "lords-github-codewave" | "lsa";
+  id: "hackunion" | "openbuild-week" | "lords-github" | "lsa-labs";
   number: string;
   title: string;
   category: string;
+  context: string;
   summary: string;
   tags: string[];
   href: string;
@@ -26,11 +27,12 @@ export const selectedWorkItems: SelectedWorkItem[] = [
     id: "hackunion",
     number: "01",
     title: "HackUnion",
-    category: "Independent developer ecosystem and community building",
+    category: "Ecosystem & Community Building",
+    context: "An independent build, still running.",
     summary:
-      "A flagship independent build focused on developers, builder communities, and ecosystem growth.",
+      "Community building, builder programs, events, and opportunity pathways run as one independent ecosystem initiative.",
     tags: ["Independent build", "Community", "Ecosystem"],
-    href: "/work",
+    href: "/work/hackunion",
     actionLabel: "View case study",
     mediaLabel: "HackUnion / Community",
     mediaPendingLabel: "Media pending",
@@ -39,39 +41,42 @@ export const selectedWorkItems: SelectedWorkItem[] = [
     id: "openbuild-week",
     number: "02",
     title: "OpenBuild Week",
-    category: "Developer program, community, and event execution",
+    category: "Campus Builder Program",
+    context: "A week designed to get students building.",
     summary:
-      "Program and event work centered on builder sessions, learning experiences, and community collaboration.",
+      "A campus builder program combining sessions, open source learning, and hands-on formats into one connected week.",
     tags: ["Program", "Events", "Builder sessions"],
-    href: "/work",
-    actionLabel: "View project",
+    href: "/work/openbuild-week",
+    actionLabel: "View case study",
     mediaLabel: "OpenBuild Week / Campus",
     mediaPendingLabel: "Media pending",
   },
   {
-    id: "lords-github-codewave",
+    id: "lords-github",
     number: "03",
-    title: "Lords Institute / GitHub / CodeWave Hub",
-    category: "Developer platform, education, and community work",
+    title: "Lords Institute \u00d7 GitHub",
+    category: "Open Source & Developer Education",
+    context: "Bringing public workflows onto campus.",
     summary:
-      "Foundation work across developer platforms, education, and community initiatives.",
-    tags: ["Platform", "Education", "Community"],
-    href: "/work",
-    actionLabel: "View work",
+      "Introducing students to GitHub, collaboration, and open source practice as a normal part of how they build.",
+    tags: ["Open source", "Education", "Platform"],
+    href: "/work/lords-github",
+    actionLabel: "View case study",
     mediaLabel: "GitHub / Workshops",
     mediaPendingLabel: "Media pending",
   },
   {
-    id: "lsa",
+    id: "lsa-labs",
     number: "04",
-    title: "LSA",
-    category: "Technical programs, institutional initiatives, operations, and community",
+    title: "LSA Labs",
+    category: "Program Design & Education",
+    context: "Structure behind the learning experience.",
     summary:
-      "Professional program and operations experience connected to technical and community-focused initiatives.",
-    tags: ["Programs", "Operations", "Institutional"],
-    href: "/work",
-    actionLabel: "View work",
-    mediaLabel: "LSA / Programs",
+      "Program design, student learning experiences, institutional collaboration, and the operations that keep them running.",
+    tags: ["Program design", "Education", "Operations"],
+    href: "/work/lsa-labs",
+    actionLabel: "View case study",
+    mediaLabel: "LSA Labs / Programs",
     mediaPendingLabel: "Media pending",
   },
 ];

@@ -23,7 +23,7 @@ export const caseStudyPreviews: CaseStudyPreview[] = [
     context:
       "An independent initiative spanning developer community building, builder programs, events, content, and opportunity pathways.",
     role: "Independent builder working across ecosystem and community operations",
-    href: "/work",
+    href: "/work/hackunion",
     actionLabel: "Read case study",
     mediaLabel: "HackUnion / Community",
     mediaPendingLabel: "Media pending",
@@ -36,7 +36,7 @@ export const caseStudyPreviews: CaseStudyPreview[] = [
     context:
       "A developer program initiative centered on builder sessions, learning formats, events, and campus/community collaboration.",
     role: "Program and community execution across planning and delivery",
-    href: "/work",
+    href: "/work/openbuild-week",
     actionLabel: "Read case study",
     mediaLabel: "OpenBuild Week / Campus",
     mediaPendingLabel: "Media pending",
@@ -49,7 +49,7 @@ export const caseStudyPreviews: CaseStudyPreview[] = [
     context:
       "Work across developer education workflows, platform/community initiatives, and workshop-led campus activity.",
     role: "Program contributor across education and community tracks",
-    href: "/work",
+    href: "/work/community-work",
     actionLabel: "Read case study",
     mediaLabel: "GitHub / Workshops",
     mediaPendingLabel: "Media pending",
@@ -62,7 +62,7 @@ export const caseStudyPreviews: CaseStudyPreview[] = [
     context:
       "Execution across technical program operations, institutional initiatives, startup-facing tracks, content adaptation, and community formats.",
     role: "Program operations and execution support across institutional and startup contexts",
-    href: "/work",
+    href: "/work/lsa",
     actionLabel: "Read case study",
     mediaLabel: "LSA / Programs",
     mediaPendingLabel: "Media pending",

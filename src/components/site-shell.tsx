@@ -1,5 +1,6 @@
 import type { PropsWithChildren } from "react";
 
+import { SiteFooter } from "@/components/navigation/site-footer";
 import { SiteNav } from "@/components/navigation/site-nav";
 
 export function SiteShell({ children }: PropsWithChildren) {
@@ -12,6 +13,7 @@ export function SiteShell({ children }: PropsWithChildren) {
       <main id="main-content" className="main-shell">
         {children}
       </main>
+      <SiteFooter />
     </div>
   );
 }

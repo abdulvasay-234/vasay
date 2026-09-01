@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 type NavItem = {
   label: string;
@@ -10,16 +10,16 @@ type NavItem = {
 };
 
 const navItems: NavItem[] = [
-  { label: "Work", href: "/#selected-work" },
-  { label: "Case Studies", href: "/#case-studies" },
-  { label: "Writing", href: "/#writing" },
-  { label: "Speaking & Events", href: "/#speaking-events" },
-  { label: "About", href: "/#about" },
+  { label: "Work", href: "/work" },
+  { label: "About", href: "/about" },
+  { label: "Playground", href: "/playground" },
 ];
 
 export function SiteNav() {
   const pathname = usePathname();
   const [isMenuOpen, setMenuOpen] = useState(false);
+  const triggerRef = useRef<HTMLButtonElement>(null);
+  const closeRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
@@ -39,6 +39,30 @@ export function SiteNav() {
     };
   }, [isMenuOpen]);
 
+  // The trigger is hidden at desktop widths, so a resize past the breakpoint must close the panel.
+  useEffect(() => {
+    const desktop = window.matchMedia("(min-width: 960px)");
+    const onChange = (event: MediaQueryListEvent) => {
+      if (event.matches) {
+        setMenuOpen(false);
+      }
+    };
+
+    desktop.addEventListener("change", onChange);
+    return () => desktop.removeEventListener("change", onChange);
+  }, []);
+
+  useEffect(() => {
+    if (isMenuOpen) {
+      closeRef.current?.focus();
+    }
+  }, [isMenuOpen]);
+
+  const closeMenu = () => {
+    setMenuOpen(false);
+    triggerRef.current?.focus();
+  };
+
   return (
     <header className="site-header" data-menu-open={isMenuOpen ? "true" : "false"}>
       <nav className="site-nav" aria-label="Primary">
@@ -48,6 +72,7 @@ export function SiteNav() {
 
         <button
           type="button"
+          ref={triggerRef}
           className="menu-trigger"
           aria-expanded={isMenuOpen}
           aria-controls="mobile-menu"
@@ -58,7 +83,7 @@ export function SiteNav() {
 
         <ul className="desktop-nav-list">
           {navItems.map((item) => {
-            const isActive = pathname === "/" && item.href === "/";
+            const isActive = !item.href.includes("#") && pathname.startsWith(item.href);
             return (
               <li key={item.href}>
                 <Link
@@ -74,17 +99,40 @@ export function SiteNav() {
         </ul>
 
         <Link
-          href="/#contact"
+          href="/contact"
           className="button button-primary contact-desktop"
+          aria-current={pathname.startsWith("/contact") ? "page" : undefined}
         >
           Contact
         </Link>
       </nav>
 
-      <div id="mobile-menu" className="mobile-menu" role="dialog" aria-modal="true" aria-label="Site menu">
+      <div
+        id="mobile-menu"
+        className="mobile-menu"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Site menu"
+        hidden={!isMenuOpen}
+      >
+        <div className="mobile-menu-bar">
+          <Link className="wordmark" href="/" onClick={() => setMenuOpen(false)}>
+            vasay
+          </Link>
+
+          <button
+            type="button"
+            ref={closeRef}
+            className="menu-close"
+            onClick={closeMenu}
+          >
+            Close <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
         <ul className="mobile-nav-list">
           {navItems.map((item) => {
-            const isActive = pathname === "/" && item.href === "/";
+            const isActive = !item.href.includes("#") && pathname.startsWith(item.href);
             return (
               <li key={item.href}>
                 <Link
@@ -102,8 +150,9 @@ export function SiteNav() {
           })}
           <li>
             <Link
-              href="/#contact"
+              href="/contact"
               className="button button-primary mobile-contact"
+              aria-current={pathname.startsWith("/contact") ? "page" : undefined}
               onClick={() => {
                 setMenuOpen(false);
               }}

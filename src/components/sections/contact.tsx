@@ -1,6 +1,6 @@
-import { collaborationTopics, contactChannels } from "@/content/contact";
+import Link from "next/link";
 
-const currentYear = new Date().getFullYear();
+import { collaborationTopics, contactChannels } from "@/content/contact";
 
 function ContactAction({
   label,
@@ -38,8 +38,9 @@ export function ContactSection() {
           Let&apos;s build something useful.
         </h2>
         <p className="contact-support">
-          Whether it&apos;s a developer program, community initiative, ecosystem idea,
-          or something still taking shape, I&apos;m open to useful conversations.
+          I&apos;m interested in working on developer communities, ecosystem programs,
+          developer experiences, and initiatives that help builders move from curiosity
+          to participation.
         </p>
       </header>
 
@@ -58,6 +59,10 @@ export function ContactSection() {
         )}
 
         <div className="contact-actions-secondary" aria-label="Additional channels">
+          <Link href="/#selected-work" className="contact-action">
+            Explore my work <span aria-hidden="true">&rarr;</span>
+          </Link>
+
           {supportingChannels.map((channel) =>
             channel.href ? (
               <ContactAction
@@ -93,34 +98,6 @@ export function ContactSection() {
           ))}
         </div>
       </div>
-
-      <footer className="contact-footer" aria-label="Site footer metadata">
-        <div className="contact-footer-brand">
-          <p className="contact-footer-name">Vasay</p>
-          <p className="contact-footer-role">Developer Relations / Community / Ecosystem</p>
-        </div>
-
-        <div className="contact-footer-links" aria-label="Footer links">
-          {contactChannels.map((channel) =>
-            channel.href ? (
-              <a
-                key={channel.id}
-                href={channel.href}
-                target={channel.isExternal ? "_blank" : undefined}
-                rel={channel.isExternal ? "noreferrer" : undefined}
-              >
-                {channel.label}
-              </a>
-            ) : (
-              <span key={channel.id} className="contact-footer-link-muted" aria-hidden="true">
-                {channel.label}
-              </span>
-            ),
-          )}
-        </div>
-
-        <p className="contact-footer-copy">(c) {currentYear} Vasay</p>
-      </footer>
 
       <div className="contact-end-rule" aria-hidden="true" />
     </section>

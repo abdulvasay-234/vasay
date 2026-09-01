@@ -725,9 +725,9 @@ export function PlaygroundSection() {
   };
 
   return (
-    <section id="playground" className="playground" aria-labelledby="playground-title">
+    <section id="playground-games" className="playground" aria-labelledby="playground-title">
       <header className="playground-header">
-        <p className="playground-label">07 / Playground</p>
+        <p className="playground-label">Experiments</p>
         <h2 id="playground-title" className="playground-title">
           A little room to play.
         </h2>

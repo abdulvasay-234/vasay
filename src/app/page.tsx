@@ -1,13 +1,14 @@
 import Link from "next/link";
 
 import { AboutSection } from "@/components/sections/about";
-import { CaseStudiesSection } from "@/components/sections/case-studies";
 import { ContactSection } from "@/components/sections/contact";
-import { PlaygroundSection } from "@/components/sections/playground";
+import { CurrentDirectionSection } from "@/components/sections/current-direction";
+import { HowIWorkSection } from "@/components/sections/how-i-work";
+import { PlaygroundPreviewSection } from "@/components/sections/playground-preview";
+import { RealWorldSection } from "@/components/sections/real-world";
 import { SelectedWorkSection } from "@/components/sections/selected-work";
-import { SpeakingEventsSection } from "@/components/sections/speaking-events";
-import { WritingSection } from "@/components/sections/writing";
 import { ShellContainer } from "@/components/layout/primitives";
+import { positioningPillars } from "@/content/homepage";
 
 export default function Home() {
   return (
@@ -15,23 +16,23 @@ export default function Home() {
       <section id="hero" className="hero" aria-labelledby="hero-title">
         <div className="hero-grid">
           <div className="hero-main">
-            <p className="hero-kicker">Developer Relations / Community / Ecosystem</p>
+            <p className="hero-kicker">
+              Developer Relations / Community / Ecosystems / Builder Programs
+            </p>
             <h1 id="hero-title" className="hero-title">
-              I build communities where developers come to learn, build, and
-              connect.
+              I build the places developers show up to learn, build, and connect.
             </h1>
             <p className="hero-supporting">
-              Developer Relations, community and ecosystem builder working across
-              programs, events, content and technology to create better
-              experiences for developers and builders.
+              I design communities, builder programs, and developer ecosystems &mdash;
+              on campuses, in open source, and around the people doing the building.
             </p>
 
             <div className="hero-actions" aria-label="Primary actions">
-              <Link href="/work" className="button button-primary">
-                View my work
+              <Link href="/#selected-work" className="button button-primary">
+                Explore my work <span aria-hidden="true">&rarr;</span>
               </Link>
-              <Link href="/about" className="button button-secondary">
-                About me
+              <Link href="/#how-i-work" className="button button-secondary">
+                About my approach <span aria-hidden="true">&rarr;</span>
               </Link>
             </div>
           </div>
@@ -67,33 +68,33 @@ export default function Home() {
       <section id="positioning" className="intro-transition" aria-labelledby="intro-title">
         <div className="intro-grid">
           <header className="intro-lead">
-            <p className="intro-label">01 / POSITIONING</p>
+            <p className="intro-label">01 / What I Do</p>
             <h2 id="intro-title" className="intro-title">
-              I work at the intersection of technology and community, building
-              programs, events, content and experiences that help developers turn
-              curiosity into building.
+              I work at the intersection of builders, communities, programs, and
+              technology ecosystems.
             </h2>
           </header>
 
           <div className="intro-support">
             <p className="intro-copy">
-              The work spans developer platforms, developer communities,
-              developer education, programs, events, ecosystems and independent
-              building.
+              Less strategy deck, more running the thing: designing formats, bringing
+              the right people together, and making participation the default.
             </p>
-            <Link href="/work" className="intro-link">
-              Explore the work <span aria-hidden="true">&rarr;</span>
+            <Link href="/#selected-work" className="intro-link">
+              See the work <span aria-hidden="true">&rarr;</span>
             </Link>
           </div>
 
-          <ul className="intro-spectrum" aria-label="Work scope">
-            <li>Developer platforms</li>
-            <li>Developer communities</li>
-            <li>Developer education</li>
-            <li>Programs</li>
-            <li>Events</li>
-            <li>Ecosystems</li>
-            <li>Independent building</li>
+          <ul className="pillar-grid" aria-label="Areas of work">
+            {positioningPillars.map((pillar, index) => (
+              <li key={pillar.id} className="pillar">
+                <p className="pillar-number">
+                  {String(index + 1).padStart(2, "0")}
+                </p>
+                <h3 className="pillar-label">{pillar.label}</h3>
+                <p className="pillar-copy">{pillar.description}</p>
+              </li>
+            ))}
           </ul>
 
           <div className="intro-next" aria-label="Section transition">
@@ -104,11 +105,11 @@ export default function Home() {
       </section>
 
       <SelectedWorkSection />
-      <CaseStudiesSection />
-      <WritingSection />
-      <SpeakingEventsSection />
+      <HowIWorkSection />
+      <RealWorldSection />
       <AboutSection />
-      <PlaygroundSection />
+      <PlaygroundPreviewSection />
+      <CurrentDirectionSection />
       <ContactSection />
     </ShellContainer>
   );
